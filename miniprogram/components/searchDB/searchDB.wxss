@@ -1,0 +1,9 @@
+/* pages/searchDB/searchDB.wxss */
+.search_result{
+  text-align: center;
+  background-color: white;
+}
+.tips{
+  margin: 5vh 5vh;
+  color: rgb(165, 165, 165);
+}

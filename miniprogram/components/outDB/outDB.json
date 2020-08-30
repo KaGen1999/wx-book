@@ -1,0 +1,24 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-card": "../../vant/card/index",
+    "van-field": "../../vant/field/index",
+    "van-panel": "../../vant/panel/index",
+    "van-button": "../../vant/button/index",
+    "van-divider": "../../vant/divider/index",
+    "van-submit-bar": "../../vant/submit-bar/index",
+    "van-nav-bar": "../../vant/nav-bar/index",
+    "van-switch": "../../vant/switch/index",
+    "van-popup": "../../vant/popup/index",
+    "van-overlay": "../../vant/overlay/index",
+    "van-checkbox": "../../vant/checkbox/index",
+    "van-checkbox-group": "../../vant/checkbox-group/index",
+    "van-dialog": "../../vant/dialog/index",
+    "van-notify": "../../vant/notify/index",
+    "van-toast": "../../vant/toast/index",
+    "van-radio": "../../vant/radio/index",
+    "van-radio-group": "../../vant/radio-group/index",
+    "van-cell": "../../vant/cell/index",
+    "van-cell-group": "../../vant/cell-group/index"
+  }
+}

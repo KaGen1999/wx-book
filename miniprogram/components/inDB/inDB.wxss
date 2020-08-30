@@ -1,0 +1,59 @@
+/* pages/inDB/inDB.wxss */
+.main_view{
+  text-align: center;
+  background-color: white;
+}
+.des_img{
+  padding-top:5vh; 
+  width: 60vw;
+}
+.tips{
+  padding-top:5vh; 
+  text-align: center;
+  background-color: white;
+  color: rgb(204, 204, 204);
+}
+.show_center{
+  padding-top: 2vh;
+  text-align: center;
+}
+.next{
+  width: 3vh;
+}
+.scan_button{
+  margin-left:20vw;
+  margin-right: 20vw;
+  margin-top: 2vh;
+}
+
+.backButton{
+  margin-left:35vw; 
+}
+.submitButton{
+  margin-left:5vw; 
+}
+.finish_view{
+  text-align: center;
+  padding-top:5vh; 
+  background-color: white;
+  height: 76vh;
+}
+.finish_img{
+  width:15vh;
+}
+.finish_info{
+  display: block;
+  padding: 2vh 5vh;
+  font-size: 18px;
+}
+.finish_info2{
+  display: block;
+  color: rgb(165, 165, 165);
+  font-size: 14;
+  padding-bottom:2vh; 
+}
+.more_button{
+  margin-left:20vw;
+  margin-right: 20vw;
+  margin-top: 2vh;
+}

@@ -1,0 +1,10 @@
+<!--pages/searchDB/searchDB.wxml-->
+<van-search value="{{ info_value }}" placeholder="请输入书本信息" use-action-slot bind:change="change_info_value">
+  <view round type="info" slot="action" bind:tap="infoSearch" size="small" color="black">确认</view>
+</van-search>
+<view wx:if="{{show_books}}">
+  <van-card wx:for="{{book_list}}" wx:key="index" price="{{item.book_discout1}}" origin-price="{{item.book_price}}" desc="{{ item.book_description }}" title="{{ item.book_name }}" thumb="{{ item.book_img }}" author="{{item.book_author}}" publisher="{{item.book_publisher}}" num="{{item.book_storage}}"/>
+  <view class="search_result">
+    <van-divider contentPosition="center" class="tips">没有更多内容了</van-divider>
+  </view>
+</view>

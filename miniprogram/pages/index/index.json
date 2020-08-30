@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+      "van-tabbar": "../../vant/tabbar/index",
+      "van-tabbar-item": "../../vant/tabbar-item/index",
+      "in-db":"../../components/inDB/inDB",
+      "search-db":"../../components/searchDB/searchDB",
+      "out-db": "../../components/outDB/outDB",
+      "history": "../../components/history/history"
+    }
+}

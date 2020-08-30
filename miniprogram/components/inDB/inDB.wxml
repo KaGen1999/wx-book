@@ -1,0 +1,61 @@
+<!--pages/inDB/inDB.wxml-->
+<!-- 导航栏 -->
+<van-steps steps="{{ steps }}" active="{{ steps_index }}" />
+
+<!-- 主体 -->
+<view class="scan_container" wx:if='{{show_scan_page}}'>
+  <van-search value="{{ isbn_value }}" placeholder="请输入书本的ISBN号码" use-action-slot bind:search="onSearch" left-icon="../../images/scan.png" maxlength="13">
+    <van-button round type="info" slot="action" bind:click="onSearch" size="small" color="black">确认</van-button>
+  </van-search>
+  <view class="main_view">
+    <image src="../../images/isbn.jpg" class="des_img" mode="widthFix">
+    </image>
+  </view>
+  <view class="tips">
+    <text>您还可以直接通过摄像头扫描ISBN码</text>
+    <view class="show_center">
+      <image src="../../images/next.png" mode="widthFix" class="next"></image>
+    </view>
+  </view>
+  <view class="scan_button">
+    <van-button round type="info" slot="action" size="large" color="rgb(111, 236, 95)" bind:click="scanCode">扫一扫</van-button>
+  </view>
+</view>
+<!-- 加载动画层 -->
+<view class="loading_container">
+  <van-popup show="{{ show_loading_page }}">
+    <van-loading type="spinner" />
+  </van-popup>
+</view>
+<!-- 扫码后 -->
+<view class='info_container' wx:if='{{show_info_page}}'>
+  <van-card price="{{book_price}}" desc="{{ book_description }}" title="{{ book_short_name }}" thumb="{{ book_img }}" author="{{book_author}}" publisher="{{book_publisher}}" />
+  <van-panel title="具体信息" desc="请确认下列信息是否正确" use-footer-slot>
+    <!-- 输入框 -->
+    <van-cell-group>
+      <van-field value="{{ book_name }}" bind:change="change_book_name" required clearable label="标题" placeholder="请输入标题" />
+      <van-field value="{{ book_author }}" bind:change="change_book_author" required clearable label="作者" placeholder="请输入作者" />
+      <van-field value="{{ book_publisher }}" bind:change="change_book_publisher" label="出版社" placeholder="请输入出版社" required border="{{ false }}" />
+      <van-field value="{{ book_publish_time }}" bind:change="change_publish_time" required clearable label="出版时间" placeholder="请输入出版时间" />
+      <van-field value="{{ book_price }}" bind:change="change_book_price" required clearable label="原价" placeholder="请输入原价" />
+      <van-field value="{{ book_remarks }}" bind:change="change_book_remarks" clearable label="备注" placeholder="请输入备注" />
+    </van-cell-group>
+    <view slot="footer">
+      <van-button size="normal" bind:click="backPage" class="backButton">返回主页</van-button>
+      <van-dialog id="confirm_dialog" />
+      <van-button size="normal" bind:click="submitData" class="submitButton">提交入库</van-button>
+      <van-dialog id="submit_dialog" />
+    </view>
+  </van-panel>
+</view>
+<!-- 提交入库后 -->
+<view class='finish_container' wx:if='{{show_finish_page}}'>
+  <view class="finish_view">
+    <image src="../../images/success.png" mode="widthFix" class="finish_img"></image>
+    <text class="finish_info">入库成功</text>
+    <text class="finish_info2">具体信息可以在查询入口或历史统计查看</text>
+    <view class="more_button">
+      <van-button round type="info" slot="action" size="large" color="rgb(111, 236, 95)" bind:click="oneMore">再来一本</van-button>
+    </view>
+  </view>
+</view>

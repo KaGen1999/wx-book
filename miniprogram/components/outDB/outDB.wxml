@@ -1,0 +1,67 @@
+<!--components/outDB/outDB.wxml-->
+<!-- 添加按钮 -->
+  <view class="button-container">
+    <van-button wx:if="{{add_book}}" icon="add-o" custom-style="border-color:white" bind:click="onAdd" class="add_button" size="large">添加订单</van-button>
+  </view>
+
+
+<!-- 主体层 -->
+<view wx:if="{{mian_container}}" class="main_container">
+  <!-- 列表 -->
+  <view class="item_list">
+    <van-checkbox-group value="{{ check_result }}" bind:change="check_Change" >
+      <van-checkbox wx:for="{{book_list}}" wx:key="index" name="{{item.book_index}}" checked-color="#07c160" class="checkbox_item">
+        <van-card price="{{item.book_sold_price}}" origin-price="{{item.book_price}}" desc="{{ item.book_description }}" title="{{ item.book_name }}" thumb="{{ item.book_img }}" author="{{item.book_author}}" publisher="{{item.book_publisher}}">
+          <view slot="footer">
+            <!-- <van-button size="mini">删除</van-button> -->
+          </view>
+        </van-card>
+      </van-checkbox>
+    </van-checkbox-group>
+  </view>
+</view>
+
+
+<van-dialog id="van-dialog" />
+
+
+<!-- 订单提交栏 -->
+<van-submit-bar wx:if="{{ show_submit_bar}}" price="{{ total_price }}" button-text="提交订单" bind:submit="submitClick" />
+<!-- 弹出层 -->
+<van-popup show="{{ show_pop }}" bind:close="onClose" position="bottom">
+  <view class="pop_bg">
+    <van-button custom-style="border-color:white" bind:click="scanAdd" class="pop_button" size="large">扫一扫添加</van-button>
+    <van-button custom-style="border-color:white" bind:click="customizeAdd" class="pop_button" size="large">自定义添加</van-button>
+  </view>
+</van-popup>
+
+<!-- 支付方式弹出层 -->
+<van-popup show="{{ show_pay_pop }}" bind:close="onClose" position="bottom">
+  <view class="pop_bg">
+    <van-button custom-style="border-color:white" bind:click="payonline" class="pop_button" size="large">线上支付</van-button>
+    <van-button custom-style="border-color:white" bind:click="paycash" class="pop_button" size="large">现金支付</van-button>
+  </view>
+</van-popup>
+
+<!-- 扫一扫添加 -->
+<view wx:if="{{show_info_page}}">
+  <van-divider contentPosition="center">订单</van-divider>
+  <van-panel use-footer-slot>
+    <!-- 输入框 -->
+    <van-cell-group>
+      <van-field value="{{ tmp_book.book_name }}" required clearable label="标题" placeholder="请输入标题" bind:change="bookChange" />
+      <!-- <van-field value="{{ tmp_book.book_author }}" required clearable label="作者" placeholder="请输入作者"  bind:change="authorChange"/>
+      <van-field value="{{ tmp_book.book_publisher }}" label="出版社" placeholder="请输入出版社" required border="{{ false }}" bind:change="publisherChange"/> -->
+      <van-field value="{{ tmp_book.book_price }}" required clearable label="原价" placeholder="请输入原价" bind:change="priceChange"/>
+      <van-field bind:change="soldChange" value="{{ tmp_book.book_sold_price }}" required clearable label="售价" placeholder="请输入售价" />
+      <van-field bind:change="remarksChange" value="{{ tmp_book.book_remarks }}" clearable label="备注" placeholder="请输入备注" />
+      <van-checkbox wx:if="{{checkbox_able}}" class="discout_checkbox" value="{{checkbox_value}}" bind:change="checkboxValueChange">二折</van-checkbox>
+    </van-cell-group>
+
+    <view slot="footer">
+      <van-button size="normal" bind:click="backPage" class="backButton">返回</van-button>
+      <van-button size="normal" bind:click="submitData" class="submitButton">加入订单</van-button>
+    </view>
+  </van-panel>
+
+</view>
